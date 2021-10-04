@@ -46,11 +46,11 @@ http://DNS-NAME-OF-AWS.LOAD.BALANCER
 You are expected to be able to determine the former yourself (if you so-chose to create the route53 hosted zone), whereas the latter can be located in the terraform `output` as `lb_dns`
 
 ## deploy / update container
-after successfully applying the terraform in the previous section,
+after successfully applying the terraform in the previous section, and with appropriate AWS credentials still available in your shell,
 
 1. cd to the `src` directory
 2. Edit the `Dockerfile` in this directory and update the `MAINTAINER` line near the top.
-3. run `deploy.sh` found in that directory to see detailed usage information.
+3. in the same directory, run `deploy.sh -h` to see detailed usage information.
 4. Follow the usage information to build and deploy an updated container to ECR.
 
 
@@ -65,6 +65,7 @@ Once the compose stack is up, you can access the hello-world service via the sta
 [http://localhost](http://localhost), or (for
 local development only of course) you can access the underlying backend container at [http://localhost:3000](http://localhost:3000)
 You can also `curl -H "Host: hello-world.local` to see the proxy is truly proxying requests to the backend container.
+
 
 # Public code utilized
 - [nginx-proxy/nginx-proxy](https://github.com/nginx-proxy/nginx-proxy)  Public nginx proxy docker container, used in the local
