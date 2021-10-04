@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  frontend:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    depends_on:
+      - backend
+  backend:
+    build: .
+    container_name: hello-world
+    hostname: hello-world.local
+    ports:
+      - "3000:3000"
+    environment:
+      - VIRTUAL_HOST=hello-world.local
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 2s
+      timeout: 2s
+      retries: 5
