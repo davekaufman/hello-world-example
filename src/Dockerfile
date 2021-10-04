@@ -11,7 +11,7 @@ HEALTHCHECK CMD curl -k -s https://localhost:$PORT/health || exit 1
 
 WORKDIR /
 RUN apk --no-cache add curl
-COPY server.py /server.py
+COPY hello-world.py /hello-world.py
 
 USER nobody
-CMD python ./server.py $PORT
+CMD python ./hello-world.py $PORT
