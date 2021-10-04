@@ -1,9 +1,9 @@
 environment = "prod"
-org_name = "daveops"
+org_name = "you"
 vpc_cidr_block = "10.0.0.0/16"
 create_hosted_zone = true
 issue_acm_certificate = true
-hosted_zone_name = "test.daveops.org"
+hosted_zone_name = "your.hosted.zone"
 
 
 # /22 gives just over 1000 usable IPs per subnet.  3 subnets per class, deliberately leave the 4th undefined for expansion into a future AZ if desired.
